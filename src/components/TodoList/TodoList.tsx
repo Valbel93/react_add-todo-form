@@ -21,9 +21,10 @@ type TodoListProps = {
 export const TodoList: React.FC<TodoListProps> = ({ todos, users }) => {
   const getUserById = (userId: number) =>
     users.find(user => user.id === userId);
+  const maxId = Math.max(...todos.map(todo => todo.id), 1);
 
   return (
-    <section className="TodoList">
+    <section className="TodoList" data-id={maxId + 1}>
       {todos.map(todo => {
         const user = getUserById(todo.userId);
 
